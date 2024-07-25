@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'GOODDP';
+  src: url(../public/GOODDP.TTF) format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'GOODDP', sans-serif;
+  font-size: 2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

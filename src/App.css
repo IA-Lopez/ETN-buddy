@@ -1,0 +1,592 @@
+/* General */
+.App {
+  text-align: center;
+  background-color: #f4f6f8;
+  color: #333;
+  font-family: GOODDP;
+  font-size: 1.3em;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin: 0 15px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: #599bff;
+}
+
+/* Background */
+.background {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+.background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./basebuddyface.png') no-repeat center center fixed;
+  background-size: cover;
+  filter: blur(8px);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.main-title {
+  font-size: 4em;
+  margin-bottom: 10px;
+  color: #599bff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.location {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.big-button {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: #007BFF;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1.2em;
+  font-weight: bolder;
+  font-variant: small-caps;
+}
+
+.big-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.button-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+/* Canvas */
+.canvas-container {
+  background: #f8f9fa;
+}
+
+.canvas-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toolbar-button {
+  padding: 10px;
+  width: 100%;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  transition: background-color 0.3s ease;
+  font-weight: 900;
+}
+
+.toolbarButton:hover {
+  background-color: #0056b3;
+}
+
+.layers {
+  font-size: 0.7em;
+  margin-top: 20px;
+  width: 100%;
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.layer-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.layer-item.selected {
+  background-color: #007BFF;
+  color: white;
+}
+
+.layer-item:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.edit-button {
+  margin-right: 10px;
+  margin-left: 5px;
+  padding: 10px 10px;
+  font-size: 16px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+}
+
+.edit-button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.remove-button {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 2px 5px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+  background: darkred;
+}
+
+.canvas {
+  flex-grow: 1;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image Options */
+.image-options {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-slider {
+  overflow-y: scroll;
+  height: 100vh;
+  min-width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.basebuddy-option {
+  margin: 10px 0;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.basebuddy-option:hover {
+  transform: scale(1.1);
+}
+
+/* Edit Text Modal */
+.edit-text-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.edit-text-modal h3 {
+  margin-top: 0;
+}
+
+.edit-text-modal label {
+  display: block;
+  margin: 10px 0;
+}
+
+.edit-text-modal input,
+.edit-text-modal select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-text-modal button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.edit-text-modal button:hover {
+  background-color: #218838;
+}
+
+.edit-text-modal button.cancel {
+  background-color: #dc3545;
+}
+
+.edit-text-modal button.cancel:hover {
+  background-color: #c82333;
+}
+
+/* Help Modal */
+.help-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.help-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.help-content h3 {
+  margin-top: 0;
+}
+
+.help-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.help-content ul li {
+  margin-bottom: 10px;
+}
+
+.help-content ul li strong {
+  display: inline-block;
+}
+
+.help-content button.close {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #dc3545;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.help-content button.close:hover {
+  background-color: #c82333;
+}
+
+/* Battles Screen */
+.battles-screen {
+  text-align: center;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.battles-screen h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #007BFF;
+}
+
+.battles-screen p {
+  font-size: 1.6em;
+  color: #333;
+}
+
+/* Roadmap Styles */
+.roadmap-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  background-color: #f9fafb;
+}
+
+.roadmap-screen h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #007BFF;
+}
+
+.roadmap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.roadmap-step {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: left;
+}
+
+.roadmap-title {
+  font-size: 1.8em;
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+
+.roadmap-image {
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.roadmap-point {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.roadmap-number {
+  min-width: 60px;
+  height: 60px;
+  margin-right: 100px;
+  border-radius: 50%;
+  background-color: #007BFF;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+/* Media Queries */
+@media (max-width: 1225px) {
+  .App {
+    overflow: hidden;
+  }
+  .header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .nav-link {
+    font-size: 0.8em;
+  }
+
+  .nav-item {
+    margin: 0 10px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .main-title {
+    font-size: 1.7em;
+  }
+
+  .subtitle {
+    font-size: 1em;
+  }
+
+  .big-button {
+    font-size: 0.8em;
+    display: flex;
+    justify-content:center;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .location {
+    font-size: 1em;
+  }
+
+  .toolbar {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .layers {
+    height: auto;
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+
+  .image-slider {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    width: 100vw;
+    height: 200px;
+  }
+
+  .basebuddy-option {
+    max-width: 200px;
+  }
+
+  .image-options {
+    width: 100vw;
+    flex-direction: column;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .canvas-container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .canvas-wrapper {
+    flex-direction: column;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  .edit-text-modal h3 {
+    font-size: 1em;
+  }
+  
+
+  .edit-text-modal {
+    width: 100%;
+    font-size: 0.7em;
+  }
+
+  .help-modal {
+    font-size: 0.7em;
+  }
+  
+  .roadmap-step {
+    padding: 15px;
+  }
+
+  .roadmap-title {
+    font-size: 1.5em;
+  }
+
+}
