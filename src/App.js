@@ -87,7 +87,7 @@ function App() {
         <div className="content">
           <h1 className="main-title">ETN BUDDY</h1>
           <h2 className="subtitle">LET'S BUILD THE MOST BASED COMMUNITY AROUND OUR FAVOURITE MASCOT</h2>
-          <h3 className="location">0x3C4C68236774B3cDA9647D5bc534Ab3841B3BfbF</h3>
+          <h3 className="location">Not live yet</h3>
           <div className="buttons">
             <button className="big-button" onClick={handleMemeCreatorClick}>
               <img src={buttonImage} alt="ETN Buddy" className="button-image" />
