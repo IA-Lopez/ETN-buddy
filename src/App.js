@@ -71,12 +71,12 @@ function App() {
               </div>
             </li>
             <li className="nav-item">
-              <a href="https://x.com/Base_Buddy" target="_blank" rel="noopener noreferrer" className="nav-link">
+              <a href="https://x.com/ETN_Buddy" target="_blank" rel="noopener noreferrer" className="nav-link">
                 Twitter
               </a>
             </li>
             <li className="nav-item">
-              <a href="https://t.me/basebuddy" target="_blank" rel="noopener noreferrer" className="nav-link">
+              <a href="https://t.me/ETNBuddy" target="_blank" rel="noopener noreferrer" className="nav-link">
                 Telegram
               </a>
             </li>
