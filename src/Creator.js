@@ -433,21 +433,33 @@ function Creator() {
           <div className="image-slider">
             <img
               src="/images/basebuddyface.png"
-              alt="Option 1"
+              alt="Buddy Face"
               className="basebuddy-option"
               onClick={() => handleImageUpload('/images/basebuddyface.png')}
             />
             <img
               src="/images/basebuddysign.png"
-              alt="Option 2"
+              alt="Buddy Sign"
               className="basebuddy-option"
               onClick={() => handleImageUpload('/images/basebuddysign.png')}
             />
             <img
               src="/images/basebuddy.png"
-              alt="Option 3"
+              alt="Buddy"
               className="basebuddy-option"
               onClick={() => handleImageUpload('/images/basebuddy.png')}
+            />
+            <img
+              src="/images/basebuddy.png"
+              alt="ETN Logo"
+              className="basebuddy-option"
+              onClick={() => handleImageUpload('/images/ETNLOGO.png')}
+            />
+            <img
+              src="/images/basebuddy.png"
+              alt="ETN inline Logo"
+              className="basebuddy-option"
+              onClick={() => handleImageUpload('/images/ETNLOGOinline.png')}
             />
           </div>
         </div>
