@@ -450,13 +450,13 @@ function Creator() {
               onClick={() => handleImageUpload('/images/basebuddy.png')}
             />
             <img
-              src="/images/basebuddy.png"
+              src="/images/ETNLOGO.png"
               alt="ETN Logo"
               className="basebuddy-option"
               onClick={() => handleImageUpload('/images/ETNLOGO.png')}
             />
             <img
-              src="/images/basebuddy.png"
+              src="/images/ETNLOGOinline.png"
               alt="ETN inline Logo"
               className="basebuddy-option"
               onClick={() => handleImageUpload('/images/ETNLOGOinline.png')}
