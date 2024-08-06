@@ -531,7 +531,7 @@
 }
 
 .how-to-buy-number {
-  min-width: 60px;
+  width: 60px;
   height: 60px;
   margin-right: 100px;
   border-radius: 50%;

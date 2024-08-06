@@ -58,10 +58,10 @@ function App() {
 
     const handleKeyDown = (e) => {
       if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'I' || e.key === 'J')) {
-        //e.preventDefault();
+        e.preventDefault();
       }
       if (e.key === 'F12') {
-        //e.preventDefault();
+        e.preventDefault();
       }
     };
 
@@ -153,7 +153,7 @@ function App() {
         )}
         {showHowToBuy && (
           <div className="how-to-buy-screen">
-            <h2>How to Buy</h2>
+            <h2>How to get BUDDY</h2>
             <div className="how-to-buy-steps">
               <div className="how-to-buy-step">
                 <span className="how-to-buy-number">1</span>
