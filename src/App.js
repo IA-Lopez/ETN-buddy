@@ -8,11 +8,13 @@ function App() {
   const [showCanvas, setShowCanvas] = useState(true);
   const [showBattles, setShowBattles] = useState(false);
   const [showRoadmap, setShowRoadmap] = useState(false);
+  const [showHowToBuy, setShowHowToBuy] = useState(false); // Nuevo estado
   const canvasRef = useRef(null);
 
   const handleMemeCreatorClick = () => {
     setShowBattles(false);
     setShowRoadmap(false);
+    setShowHowToBuy(false); 
     setShowCanvas(true);
     setTimeout(() => {
       canvasRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -22,6 +24,7 @@ function App() {
   const handleBattlesClick = () => {
     setShowCanvas(false);
     setShowRoadmap(false);
+    setShowHowToBuy(false);
     setShowBattles(true);
     setTimeout(() => {
       canvasRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -31,7 +34,18 @@ function App() {
   const handleRoadmapClick = () => {
     setShowCanvas(false);
     setShowBattles(false);
+    setShowHowToBuy(false);
     setShowRoadmap(true);
+    setTimeout(() => {
+      canvasRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  };
+
+  const handleHowToBuyClick = () => {
+    setShowCanvas(false);
+    setShowBattles(false);
+    setShowRoadmap(false);
+    setShowHowToBuy(true);
     setTimeout(() => {
       canvasRef.current.scrollIntoView({ behavior: 'smooth' });
     }, 300);
@@ -44,10 +58,10 @@ function App() {
 
     const handleKeyDown = (e) => {
       if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'I' || e.key === 'J')) {
-        e.preventDefault();
+        //e.preventDefault();
       }
       if (e.key === 'F12') {
-        e.preventDefault();
+        //e.preventDefault();
       }
     };
 
@@ -87,7 +101,10 @@ function App() {
         <div className="content">
           <h1 className="main-title">ETN BUDDY</h1>
           <h2 className="subtitle">LET'S BUILD THE MOST BASED COMMUNITY AROUND OUR FAVOURITE MASCOT</h2>
-          <h3 className="location">Not live yet</h3>
+          <div className="location-container">
+            <h3 className="location">Not live yet</h3>
+            <button className="big-button" onClick={handleHowToBuyClick}>How to get BUDDY <img src={buttonImage} alt="ETN Buddy" className="button-image" /></button>
+          </div>
           <div className="buttons">
             <button className="big-button" onClick={handleMemeCreatorClick}>
               <img src={buttonImage} alt="ETN Buddy" className="button-image" />
@@ -130,6 +147,33 @@ function App() {
                   <span className="roadmap-number">4</span>
                   <p>What else do you want? We hear you!</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {showHowToBuy && (
+          <div className="how-to-buy-screen">
+            <h2>How to Buy</h2>
+            <div className="how-to-buy-steps">
+              <div className="how-to-buy-step">
+                <span className="how-to-buy-number">1</span>
+                <p>Download Metamask Wallet from App Store or Play Store. For desktop or laptop users, you can download Metamask Chrome Extension by going to Metamask.io.</p>
+              </div>
+              <div className="how-to-buy-step">
+                <span className="how-to-buy-number">2</span>
+                <p>Head over to Ankr.com on your Metamask App browser or at Chrome, then find “ETN Network” and click “Connect Wallet.”</p>
+              </div>
+              <div className="how-to-buy-step">
+                <span className="how-to-buy-number">3</span>
+                <p>Purchase ETN and send to your ETN Address in your Metamask Wallet.</p>
+              </div>
+              <div className="how-to-buy-step">
+                <span className="how-to-buy-number">4</span>
+                <p>On your Metamask browser or Chrome, search for app.electroswap.io/#/swap, launch the app and connect your wallet.</p>
+              </div>
+              <div className="how-to-buy-step">
+                <span className="how-to-buy-number">5</span>
+                <p>Now, copy and paste in the CA for $BUDDY. Set amount, click “Swap” and confirm in MetaMask.</p>
               </div>
             </div>
           </div>
