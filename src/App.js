@@ -110,7 +110,7 @@ function App() {
           <h1 className="main-title">ETN BUDDY</h1>
           <h2 className="subtitle">LET'S BUILD THE MOST BASED COMMUNITY AROUND OUR FAVOURITE MASCOT</h2>
           <div className="location-container">
-            <button className="copy-button" onClick={() => copyToClipboard('0x3C4C68236774B3cDA9647D5bc534Ab3841B3BfbF')}>
+            <button className="copy-button" onClick={() => copyToClipboard('0x38B54f147303887BD2E932373432FfCBD11Ff6a5')}>
               Copy CA
             </button>
             <button className="big-button button-margin" onClick={handleHowToBuyClick}>How to get BUDDY <img src={buttonImage} alt="ETN Buddy" className="button-image" /></button>

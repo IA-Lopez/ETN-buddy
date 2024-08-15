@@ -553,6 +553,7 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
   transition: background-color 0.3s, transform 0.3s;
   margin-right: 15px;
 }
