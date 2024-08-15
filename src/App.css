@@ -562,6 +562,10 @@
   transform: scale(1.05);
 }
 
+.button-margin {
+  margin-bottom: 5px;
+}
+
 /* Media Queries */
 @media (max-width: 1225px) {
   .App {
@@ -601,10 +605,6 @@
     font-size: 0.8em;
     display: flex;
     justify-content:center;
-  }
-
-  .button-margin {
-    margin-bottom: 5px;
   }
 
   .buttons {
