@@ -544,6 +544,23 @@
   font-size: 1.2em;
 }
 
+.copy-button {
+  background-color: #007BFF;
+  color: white;
+  padding: 12px 24px;
+  width: 30%;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-right: 15px;
+}
+
+.copy-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
 
 /* Media Queries */
 @media (max-width: 1225px) {

@@ -51,6 +51,14 @@ function App() {
     }, 300);
   };
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Copied to clipboard');
+    }).catch(err => {
+      console.error('Failed to copy!', err);
+    });
+  };
+
   useEffect(() => {
     const handleContextMenu = (e) => {
       e.preventDefault();
@@ -102,7 +110,9 @@ function App() {
           <h1 className="main-title">ETN BUDDY</h1>
           <h2 className="subtitle">LET'S BUILD THE MOST BASED COMMUNITY AROUND OUR FAVOURITE MASCOT</h2>
           <div className="location-container">
-            <h3 className="location">Not live yet</h3>
+            <button className="copy-button" onClick={() => copyToClipboard('0x3C4C68236774B3cDA9647D5bc534Ab3841B3BfbF')}>
+              Copy CA
+            </button>
             <button className="big-button" onClick={handleHowToBuyClick}>How to get BUDDY <img src={buttonImage} alt="ETN Buddy" className="button-image" /></button>
           </div>
           <div className="buttons">
