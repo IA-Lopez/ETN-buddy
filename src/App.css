@@ -549,7 +549,7 @@
   color: white;
   padding: 12px 24px;
   width: 30%;
-  font-size: 18px;
+  font-size: 0.6em;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -601,6 +601,10 @@
     font-size: 0.8em;
     display: flex;
     justify-content:center;
+  }
+
+  .button-margin {
+    margin-bottom: 5px;
   }
 
   .buttons {

@@ -113,7 +113,7 @@ function App() {
             <button className="copy-button" onClick={() => copyToClipboard('0x3C4C68236774B3cDA9647D5bc534Ab3841B3BfbF')}>
               Copy CA
             </button>
-            <button className="big-button" onClick={handleHowToBuyClick}>How to get BUDDY <img src={buttonImage} alt="ETN Buddy" className="button-image" /></button>
+            <button className="big-button button-margin" onClick={handleHowToBuyClick}>How to get BUDDY <img src={buttonImage} alt="ETN Buddy" className="button-image" /></button>
           </div>
           <div className="buttons">
             <button className="big-button" onClick={handleMemeCreatorClick}>
