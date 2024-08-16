@@ -229,7 +229,7 @@ function Creator() {
         setBackgroundImage({
           image: img,
           width,
-          height
+          height,
         });
       };
     };
@@ -256,16 +256,19 @@ function Creator() {
     const newImg = new window.Image();
     newImg.src = imgSrc;
     newImg.onload = () => {
-      setLayers([{ 
-        id: `image${layers.length + 1}`, 
-        type: 'image', 
-        name: `Image Layer ${layers.length + 1}`, 
-        src: imgSrc, 
-        x: 0, 
-        y: 0, 
-        width: newImg.width, 
-        height: newImg.height 
-      }, ...layers]);
+      setLayers([
+        {
+          id: `image${layers.length + 1}`,
+          type: 'image',
+          name: `Image Layer ${layers.length + 1}`,
+          src: imgSrc,
+          x: 0,
+          y: 0,
+          width: newImg.width,
+          height: newImg.height,
+        },
+        ...layers,
+      ]);
     };
   };
 
@@ -282,7 +285,7 @@ function Creator() {
       fontStyle: 'normal',
       fill: '#000000',
       stroke: '#000000',
-      strokeWidth: 0
+      strokeWidth: 0,
     };
     setLayers([newText, ...layers]);
   };
@@ -300,7 +303,9 @@ function Creator() {
   };
 
   const handleChange = (newAttrs) => {
-    const updatedLayers = layers.map((layer) => (layer.id === newAttrs.id ? newAttrs : layer));
+    const updatedLayers = layers.map((layer) =>
+      layer.id === newAttrs.id ? newAttrs : layer
+    );
     setLayers(updatedLayers);
   };
 
@@ -308,22 +313,22 @@ function Creator() {
     const value = field === 'strokeWidth' ? Math.max(0, parseFloat(e.target.value)) : e.target.value;
     setEditingText({
       ...editingText,
-      [field]: value
+      [field]: value,
     });
-  
-    const updatedLayers = layers.map((layer) => 
+
+    const updatedLayers = layers.map((layer) =>
       layer.id === editingText.id ? { ...layer, [field]: value } : layer
     );
     setLayers(updatedLayers);
   };
-  
+
   const handleColorChange = (e, field) => {
     const value = e.target.value;
     setEditingText({
       ...editingText,
-      [field]: value
+      [field]: value,
     });
-  
+
     const updatedLayers = layers.map((layer) =>
       layer.id === editingText.id ? { ...layer, [field]: value } : layer
     );
@@ -331,11 +336,11 @@ function Creator() {
   };
 
   const handleDownload = () => {
-    selectShape(null); 
+    selectShape(null);
     setTimeout(() => {
       const uri = document.querySelector('canvas').toDataURL('image/png');
       const link = document.createElement('a');
-      link.download = 'base-buddy-meme.png';
+      link.download = 'ETN-buddy-meme.png';
       link.href = uri;
       document.body.appendChild(link);
       link.click();
@@ -368,7 +373,9 @@ function Creator() {
     <DndProvider backend={HTML5Backend}>
       <div className="canvas-wrapper">
         <div className="toolbar">
-          <button className="toolbar-button" onClick={() => fileInputRef.current.click()}>Load background</button>
+          <button className="toolbar-button" onClick={() => fileInputRef.current.click()}>
+            Load background
+          </button>
           <input
             type="file"
             accept="image/*"
@@ -376,7 +383,9 @@ function Creator() {
             style={{ display: 'none' }}
             onChange={handleBackgroundUpload}
           />
-          <button className="toolbar-button" onClick={handleTextAdd}>Add Text</button>
+          <button className="toolbar-button" onClick={handleTextAdd}>
+            Add Text
+          </button>
           <div className="layers">
             {layers.map((layer, index) => (
               <LayerItem
@@ -393,11 +402,22 @@ function Creator() {
               />
             ))}
           </div>
-          <button className="toolbar-button" onClick={handleDownload} disabled={!backgroundImage}>Download final image</button>
-          <button className="toolbar-button" onClick={() => setShowHelp(true)}>Help</button>
+          <button
+            className="toolbar-button"
+            onClick={handleDownload}
+            disabled={!backgroundImage}
+          >
+            Download final image
+          </button>
+          <button className="toolbar-button" onClick={() => setShowHelp(true)}>
+            Help
+          </button>
         </div>
         <div className="canvas">
-          <Stage width={backgroundImage ? backgroundImage.width : window.innerWidth * 0.75} height={backgroundImage ? backgroundImage.height : window.innerHeight * 0.75}>
+          <Stage
+            width={backgroundImage ? backgroundImage.width : window.innerWidth * 0.75}
+            height={backgroundImage ? backgroundImage.height : window.innerHeight * 0.75}
+          >
             <Layer>
               {backgroundImage && (
                 <KonvaImage
@@ -406,7 +426,7 @@ function Creator() {
                   height={backgroundImage.height}
                 />
               )}
-              {layers.slice().reverse().map((layer) => (
+              {layers.slice().reverse().map((layer) =>
                 layer.type === 'image' ? (
                   <URLImage
                     key={layer.id}
@@ -425,7 +445,23 @@ function Creator() {
                     onChange={handleChange}
                   />
                 )
-              ))}
+              )}
+              {/* Marca de agua */}
+              <KonvaText
+                text="etn.buddybattles.xyz"
+                x={backgroundImage ? backgroundImage.width / 2 : window.innerWidth * 0.75 / 2}
+                y={backgroundImage ? backgroundImage.height - 30 : window.innerHeight * 0.75 - 30}
+                fontSize={20}
+                fontFamily="Arial"
+                fill="white"
+                align="center"
+                verticalAlign="middle"
+                width={300}
+                offsetX={150}
+                shadowColor="black"
+                shadowBlur={5}
+                shadowOpacity={0.6}
+              />
             </Layer>
           </Stage>
         </div>
@@ -532,23 +568,43 @@ function Creator() {
                 onChange={(e) => handleColorChange(e, 'stroke')}
               />
             </label>
-            <button className="cancel" onClick={() => setEditingText(null)}>Close</button>
+            <button className="cancel" onClick={() => setEditingText(null)}>
+              Close
+            </button>
           </div>
         )}
         {showHelp && (
           <div className="help-modal">
             <div className="help-content">
               <h3>Help</h3>
-              <p>Welcome to the Base Buddy Image Creator! Here are the features you can use:</p>
+              <p>Welcome to the ETN Buddy Image Creator! Here are the features you can use:</p>
               <ul>
-                <li><strong>1. Add Background:</strong> Click "Load background" to upload a background image.</li>
-                <li><strong>2. Edit:</strong></li>
-                <li><strong>Add Text -</strong> Click "Add Text" to insert text. Double-click (or click edit button) to edit  its content and style.</li>
-                <li><strong>Add Images -</strong> Click on the images in the right column to add them. Drag to reposition, resize and rotate using the editing handles.</li>
-                <li><strong>Layers -</strong> Manage layers in the left column. Click to select, drag to reorder, and click the X button to delete.</li>
-                <li><strong>3. Download!</strong> Click "Download final image" to get your new creation.</li>
+                <li>
+                  <strong>1. Add Background:</strong> Click "Load background" to upload a background
+                  image.
+                </li>
+                <li>
+                  <strong>2. Edit:</strong>
+                </li>
+                <li>
+                  <strong>Add Text -</strong> Click "Add Text" to insert text. Double-click (or click
+                  edit button) to edit its content and style.
+                </li>
+                <li>
+                  <strong>Add Images -</strong> Click on the images in the right column to add them.
+                  Drag to reposition, resize and rotate using the editing handles.
+                </li>
+                <li>
+                  <strong>Layers -</strong> Manage layers in the left column. Click to select, drag to
+                  reorder, and click the X button to delete.
+                </li>
+                <li>
+                  <strong>3. Download!</strong> Click "Download final image" to get your new creation.
+                </li>
               </ul>
-              <button className="close" onClick={() => setShowHelp(false)}>Close</button>
+              <button className="close" onClick={() => setShowHelp(false)}>
+                Close
+              </button>
             </div>
           </div>
         )}
