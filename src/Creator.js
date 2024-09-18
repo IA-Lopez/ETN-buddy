@@ -474,12 +474,6 @@ function Creator() {
               onClick={() => handleImageUpload('/images/basebuddyface.png')}
             />
             <img
-              src="/images/basebuddysign.png"
-              alt="Buddy Sign"
-              className="basebuddy-option"
-              onClick={() => handleImageUpload('/images/basebuddysign.png')}
-            />
-            <img
               src="/images/basebuddy.png"
               alt="Buddy"
               className="basebuddy-option"
