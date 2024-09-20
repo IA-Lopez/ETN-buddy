@@ -813,17 +813,17 @@
     overflow-x: scroll;
     width: 100vw;
     height: 200px;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .basebuddy-option {
     margin: 10px 0;
     cursor: pointer;
     transition: transform 0.3s ease;
-    max-height: 200px; /* Limitar altura */
-    max-width: fit-content;
-    height: auto; /* Mantener el aspecto de la imagen */
-    object-fit: contain; /* Evitar deformaciones */
+    max-width: 100%; /* Asegura que la imagen no sea más ancha que su contenedor */
+    min-width: 200px;
+    height: auto;
+    object-fit: contain; /* Evita que se deforme */
   }
 
   .image-options {
