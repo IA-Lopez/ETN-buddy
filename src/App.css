@@ -549,9 +549,9 @@
   height: 200vw; 
   /*background: radial-gradient(circle, rgba(0, 123, 255, 0.3) 10%, transparent 50%);
   background-size: 20px 20px;*/
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjE0NiIgdmlld0JveD0iMCAwIDE0NiAxNDYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjczIiBjeT0iNzMiIHI9IjczIiBmaWxsPSIjMDA1MkZGIi8+CjxwYXRoIGQ9Ik03My4zMjMgMTIzLjcyOUMxMDEuNjE3IDEyMy43MjkgMTI0LjU1MyAxMDAuODMyIDEyNC41NTMgNzIuNTg3NUMxMjQuNTUzIDQ0LjM0MyAxMDEuNjE3IDIxLjQ0NjMgNzMuMzIzIDIxLjQ0NjNDNDYuNDc5NSAyMS40NDYzIDI0LjQ1ODEgNDIuMDU1OCAyMi4yNzEgNjguMjg4N0g4OS45ODU5Vjc2Ljg4NjRIMjIuMjcxQzI0LjQ1ODEgMTAzLjExOSA0Ni40Nzk1IDEyMy43MjkgNzMuMzIzIDEyMy43MjlaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4="); /* SVG incrustado como fondo */
+  background-image: url("../public/images/ETNLOGO.png");
   background-size: 120px 120px;
-  opacity: 0.4;
+  opacity: 0.2;
   z-index: -1;
   animation: floatingParticles 700s linear infinite; 
 }
