@@ -13,7 +13,7 @@ function App() {
   const canvasRef = useRef(null);
 
   const handleDappClick = () => {
-    window.location.href = 'https://dapp.buddybattles.xyz/simple-battles';
+    window.location.href = 'https://app.buddybattles.xyz/simple-battles';
   };
 
   const handleHowToBuyClick = () => {
@@ -151,7 +151,7 @@ function App() {
                 </div>
                 <div className="roadmap-point">
                   <span className="roadmap-number">2</span>
-                  <p>MEME BATTLES - Battle other holders in the same size rooms with your meme creation and earn tokens winning!!. Winner will be selected by a votation system that will prevent bad actors <br /> Coming soon...</p>
+                  <p>PLATFORM BATTLES - A Buddy (and maybe others) platforms game with a ranking and rewards based on it <br /> Coming soon...</p>
                 </div>
                 <div className="roadmap-point">
                   <span className="roadmap-number">3</span>
