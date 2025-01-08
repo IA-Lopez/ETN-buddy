@@ -95,7 +95,7 @@ function App() {
     <div className="App">
       <div className="content-fullscreen">
         <div className="image-column">
-          <img src={baseBuddy} alt="Base Buddy" className="centered-image" />
+          <img src={baseBuddy} alt="ETN Buddy" className="centered-image" />
 
           {/* Botones debajo de la imagen */}
           <div className="location">
@@ -143,7 +143,7 @@ function App() {
           <div className="roadmap-screen">
             <h2>Roadmap</h2>
             <div className="roadmap">
-              <img src={baseBuddyFace} alt="Base Buddy Logo" className="centered-image" />
+              <img src={baseBuddyFace} alt="ETN Buddy Logo" className="centered-image" />
               <div className="roadmap-step">
                 <div className="roadmap-point">
                   <span className="roadmap-number">1</span>
@@ -180,7 +180,7 @@ function App() {
           <div className="character-screen">
             <h2 className="section-title">Buddy's Story</h2>
             <div className="character-content">
-              <img src={baseBuddyFace} alt="Base Buddy Logo" className="centered-image" />
+              <img src={baseBuddyFace} alt="ETN Buddy Logo" className="centered-image" />
               <div className="character-text">
                 <p>Buddy was a good kid, innocent at heart. But one day, everything changed. His family got rugged on shitcoins, their life savings vanished overnight. The shock left them homeless, forced to live on the streets. With no one to turn to, Buddy had to learn to survive, fighting for food and shelter in the cold, unforgiving city.</p>
                 <p>As he grew stronger, Buddy immersed himself in martial arts. He became a master of Brazilian Jiu-Jitsu, learning to dominate his opponents on the ground with submission holds. But that wasn't enough for him. He also trained in Muay Thai, mastering powerful strikes, and Krav Maga, perfecting brutal self-defense techniques designed for real-life street fights.</p>
