@@ -904,7 +904,7 @@
     background-size: 80px 80px;
   }
   .coingecko-logo {
-    width: 50px; /* Ajusta este valor según el tamaño deseado */
+    width: 50%; /* Ajusta este valor según el tamaño deseado */
     height: auto; /* Mantiene la proporción */
   }
   .location {
