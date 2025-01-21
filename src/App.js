@@ -17,7 +17,7 @@ function App() {
   };
 
   const handleMintClick = () => {
-    window.location.href = 'https://mint.buddybattles.xyz';
+    window.location.href = 'https://etn.buddybattles.xyz';
   };
 
   const handleHowToBuyClick = () => {
