@@ -903,4 +903,14 @@
     height: 200vh; 
     background-size: 80px 80px;
   }
+  .coingecko-logo {
+    width: 50px; /* Ajusta este valor según el tamaño deseado */
+    height: auto; /* Mantiene la proporción */
+  }
+  .location {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos */
+    gap: 10px; /* Espaciado entre elementos */
+  }
 }

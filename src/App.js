@@ -102,20 +102,49 @@ function App() {
               Copy CA
             </button>
 
-            <a href="https://www.geckoterminal.com/electroneum/pools/0x4d94a657f0267c1702a141af603a8d21df6ac671" target="_blank" rel="noopener noreferrer">
+            <div className="location">
+            {/* Logo de CoinGecko */}
+            <a
+              href="https://www.geckoterminal.com/electroneum/pools/0x4d94a657f0267c1702a141af603a8d21df6ac671"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src="https://s.geckoterminal.com/_next/static/media/logo_dark.6b1547fe.png"
                 alt="CoinGecko"
+                className="coingecko-logo"
                 style={{ backgroundColor: '#222', borderRadius: '8px', padding: '5px' }}
               />
             </a>
 
-            <a href="https://x.com/ETN_Buddy" target="_blank" rel="noopener noreferrer" className="nav-link">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/twitter.svg" alt="X" className="social-icon" />
-            </a>
-            <a href="https://t.me/etnbuddy" target="_blank" rel="noopener noreferrer" className="nav-link">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/telegram.svg" alt="Telegram" className="social-icon" />
-            </a>
+            {/* Redes sociales */}
+            <div className="social-icons">
+              <a
+                href="https://x.com/ETN_Buddy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/twitter.svg"
+                  alt="X"
+                  className="social-icon"
+                />
+              </a>
+              <a
+                href="https://t.me/etnbuddy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/telegram.svg"
+                  alt="Telegram"
+                  className="social-icon"
+                />
+              </a>
+            </div>
+          </div>
           </div>
         </div>
         <div className="buttons-column">
