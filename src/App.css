@@ -42,6 +42,7 @@
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .nav-link:hover {
