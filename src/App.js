@@ -16,6 +16,10 @@ function App() {
     window.location.href = 'https://app.buddybattles.xyz/simple-battles';
   };
 
+  const handleMintClick = () => {
+    window.location.href = 'https://mint.buddybattles.xyz';
+  };
+
   const handleHowToBuyClick = () => {
     hideAllSections();
     setShowHowToBuy(true);
@@ -84,11 +88,7 @@ function App() {
   }, []);
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);/*.then(() => {
-      //alert('Copied to clipboard');
-    }).catch(err => {
-      //console.error('Failed to copy!', err);
-    });*/
+    navigator.clipboard.writeText(text);
   };
 
   return (
@@ -97,17 +97,19 @@ function App() {
         <div className="image-column">
           <img src={baseBuddy} alt="ETN Buddy" className="centered-image" />
 
-          {/* Botones debajo de la imagen */}
           <div className="location">
             <button className="copy-button" onClick={() => copyToClipboard('0x38B54f147303887BD2E932373432FfCBD11Ff6a5')}>
               Copy CA
             </button>
 
             <a href="https://www.geckoterminal.com/electroneum/pools/0x4d94a657f0267c1702a141af603a8d21df6ac671" target="_blank" rel="noopener noreferrer">
-              <img src="https://s.geckoterminal.com/_next/static/media/logo_dark.6b1547fe.png"/>
+              <img
+                src="https://s.geckoterminal.com/_next/static/media/logo_dark.6b1547fe.png"
+                alt="CoinGecko"
+                style={{ backgroundColor: '#222', borderRadius: '8px', padding: '5px' }}
+              />
             </a>
 
-            {/* Enlaces a X y Telegram */}
             <a href="https://x.com/ETN_Buddy" target="_blank" rel="noopener noreferrer" className="nav-link">
               <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/twitter.svg" alt="X" className="social-icon" />
             </a>
@@ -119,6 +121,9 @@ function App() {
         <div className="buttons-column">
           <button className="big-button full-width-button" onClick={handleDappClick}>
             ⚔️ DAPP ⚔️ <br /> Buddy Battles
+          </button>
+          <button className="big-button full-width-button" onClick={handleMintClick}>
+            🪙 Mint Buddy Pass
           </button>
           <button className="big-button full-width-button" onClick={handleMemeCreatorClick}>
             🎨 Meme Builder
