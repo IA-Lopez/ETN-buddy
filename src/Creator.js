@@ -18,19 +18,14 @@ const URLImage = ({ image, isSelected, onSelect, onChange }) => {
     }
   }, [isSelected]);
 
-  React.useEffect(() => {
-    if (shapeRef.current) {
-      shapeRef.current.width(image.width);
-      shapeRef.current.height(image.height);
-    }
-  }, [image.width, image.height]);
-
   return (
     <>
       <KonvaImage
         image={img}
         ref={shapeRef}
         draggable
+        x={image.x}
+        y={image.y}
         width={image.width}
         height={image.height}
         onClick={onSelect}
@@ -56,6 +51,57 @@ const URLImage = ({ image, isSelected, onSelect, onChange }) => {
             height: node.height() * scaleY,
           });
         }}
+      />
+      {isSelected && <Transformer ref={trRef} />}
+    </>
+  );
+};
+
+const BackgroundImage = ({ background, isSelected, onSelect, onChange }) => {
+  const shapeRef = useRef();
+  const trRef = useRef();
+  const [img] = useImage(background.src);
+
+  React.useEffect(() => {
+    if (isSelected) {
+      trRef.current.nodes([shapeRef.current]);
+      trRef.current.getLayer().batchDraw();
+    }
+  }, [isSelected]);
+
+  return (
+    <>
+      <KonvaImage
+        image={img}
+        ref={shapeRef}
+        //draggable
+        x={background.x}
+        y={background.y}
+        width={background.width}
+        height={background.height}
+        /*onClick={onSelect}
+        onTap={onSelect}
+        onDragEnd={(e) => {
+          onChange({
+            ...background,
+            x: e.target.x(),
+            y: e.target.y(),
+          });
+        }}
+        onTransformEnd={(e) => {
+          const node = shapeRef.current;
+          const scaleX = node.scaleX();
+          const scaleY = node.scaleY();
+          node.scaleX(1);
+          node.scaleY(1);
+          onChange({
+            ...background,
+            x: node.x(),
+            y: node.y(),
+            width: node.width() * scaleX,
+            height: node.height() * scaleY,
+          });
+        }}*/
       />
       {isSelected && <Transformer ref={trRef} />}
     </>
@@ -210,7 +256,7 @@ const LayerItem = ({ id, name, type, index, isSelected, onSelect, onMoveLayer, o
   );
 };
 
-function Creator() {
+const Creator = ({ setAlertMessage, setShowAlert }) => {
   const [backgroundImage, setBackgroundImage] = useState(null);
   const [layers, setLayers] = useState([]);
   const [selectedId, selectShape] = useState(null);
@@ -227,7 +273,11 @@ function Creator() {
       img.onload = () => {
         const { width, height } = adjustSizeToFitScreen(img.width, img.height);
         setBackgroundImage({
-          image: img,
+          id: 'background',
+          type: 'background',
+          src: reader.result,
+          x: 0,
+          y: 0,
           width,
           height,
         });
@@ -255,22 +305,35 @@ function Creator() {
   const handleImageUpload = (imgSrc) => {
     const newImg = new window.Image();
     newImg.src = imgSrc;
+    
     newImg.onload = () => {
+      const canvasWidth = backgroundImage ? backgroundImage.width : window.innerWidth * 0.55;
+      const canvasHeight = backgroundImage ? backgroundImage.height : window.innerHeight * 0.55;
+  
+      const newWidth = canvasWidth * 0.3;
+  
+      const aspectRatio = newImg.height / newImg.width;
+      const newHeight = newWidth * aspectRatio;
+  
+      const xPos = (canvasWidth - newWidth) / 2;
+      const yPos = (canvasHeight - newHeight) / 2;
+  
       setLayers([
         {
           id: `image${layers.length + 1}`,
           type: 'image',
           name: `Image Layer ${layers.length + 1}`,
           src: imgSrc,
-          x: 0,
-          y: 0,
-          width: newImg.width,
-          height: newImg.height,
+          x: xPos,
+          y: yPos,
+          width: newWidth,
+          height: newHeight
         },
         ...layers,
       ]);
     };
   };
+  
 
   const handleTextAdd = () => {
     const newText = {
@@ -310,7 +373,8 @@ function Creator() {
   };
 
   const handleTextChange = (e, field) => {
-    const value = field === 'strokeWidth' ? Math.max(0, parseFloat(e.target.value)) : e.target.value;
+    const value =
+      field === 'strokeWidth' ? Math.max(0, parseFloat(e.target.value)) : e.target.value;
     setEditingText({
       ...editingText,
       [field]: value,
@@ -336,6 +400,12 @@ function Creator() {
   };
 
   const handleDownload = () => {
+    if (!backgroundImage) {
+      setAlertMessage('Load a background image first!');
+      setShowAlert(true);
+      return;
+    }
+    
     selectShape(null);
     setTimeout(() => {
       const uri = document.querySelector('canvas').toDataURL('image/png');
@@ -402,11 +472,7 @@ function Creator() {
               />
             ))}
           </div>
-          <button
-            className="toolbar-button"
-            onClick={handleDownload}
-            disabled={!backgroundImage}
-          >
+          <button className="toolbar-button" onClick={handleDownload}>
             Download final image
           </button>
           <button className="toolbar-button" onClick={() => setShowHelp(true)}>
@@ -420,10 +486,11 @@ function Creator() {
           >
             <Layer>
               {backgroundImage && (
-                <KonvaImage
-                  image={backgroundImage.image}
-                  width={backgroundImage.width}
-                  height={backgroundImage.height}
+                <BackgroundImage
+                  background={backgroundImage}
+                  isSelected={backgroundImage.id === selectedId}
+                  onSelect={() => handleSelect(backgroundImage.id)}
+                  onChange={handleChange}
                 />
               )}
               {layers.slice().reverse().map((layer) =>
@@ -514,10 +581,7 @@ function Creator() {
             </label>
             <label>
               Font Weight:
-              <select
-                value={editingText.fontWeight}
-                onChange={(e) => handleTextChange(e, 'fontWeight')}
-              >
+              <select value={editingText.fontWeight} onChange={(e) => handleTextChange(e, 'fontWeight')}>
                 <option value="normal">Normal</option>
                 <option value="bold">Bold</option>
                 <option value="bolder">Bolder</option>
@@ -526,10 +590,7 @@ function Creator() {
             </label>
             <label>
               Font Family:
-              <select
-                value={editingText.fontFamily}
-                onChange={(e) => handleTextChange(e, 'fontFamily')}
-              >
+              <select value={editingText.fontFamily} onChange={(e) => handleTextChange(e, 'fontFamily')}>
                 <option value="GOODDP">GOODDP</option>
                 <option value="Arial">Arial</option>
                 <option value="Times New Roman">Times New Roman</option>
@@ -540,11 +601,7 @@ function Creator() {
             </label>
             <label>
               Text Color:
-              <input
-                type="color"
-                value={editingText.fill}
-                onChange={(e) => handleColorChange(e, 'fill')}
-              />
+              <input type="color" value={editingText.fill} onChange={(e) => handleColorChange(e, 'fill')} />
             </label>
             <label>
               Border Width:
@@ -556,11 +613,7 @@ function Creator() {
             </label>
             <label>
               Border Color:
-              <input
-                type="color"
-                value={editingText.stroke}
-                onChange={(e) => handleColorChange(e, 'stroke')}
-              />
+              <input type="color" value={editingText.stroke} onChange={(e) => handleColorChange(e, 'stroke')} />
             </label>
             <button className="cancel" onClick={() => setEditingText(null)}>
               Close
@@ -574,23 +627,22 @@ function Creator() {
               <p>Welcome to the ETN Buddy Image Creator! Here are the features you can use:</p>
               <ul>
                 <li>
-                  <strong>1. Add Background:</strong> Click "Load background" to upload a background
-                  image.
+                  <strong>1. Add Background:</strong> Click "Load background" to upload a background image.
                 </li>
                 <li>
                   <strong>2. Edit:</strong>
                 </li>
                 <li>
-                  <strong>Add Text -</strong> Click "Add Text" to insert text. Double-click (or click
-                  edit button) to edit its content and style.
+                  <strong>Add Text -</strong> Click "Add Text" to insert text. Double-click (or click edit button) to edit
+                  its content and style.
                 </li>
                 <li>
-                  <strong>Add Images -</strong> Click on the images in the right column to add them.
-                  Drag to reposition, resize and rotate using the editing handles.
+                  <strong>Add Images -</strong> Click on the images in the right column to add them. Drag to reposition,
+                  resize and rotate using the editing handles.
                 </li>
                 <li>
-                  <strong>Layers -</strong> Manage layers in the left column. Click to select, drag to
-                  reorder, and click the X button to delete.
+                  <strong>Layers -</strong> Manage layers in the left column. Click to select, drag to reorder, and click
+                  the X button to delete.
                 </li>
                 <li>
                   <strong>3. Download!</strong> Click "Download final image" to get your new creation.
