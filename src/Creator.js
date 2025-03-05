@@ -518,7 +518,7 @@ const Creator = ({ setAlertMessage, setShowAlert }) => {
                 text="etn.buddybattles.xyz"
                 x={backgroundImage ? backgroundImage.width / 2 : window.innerWidth * 0.75 / 2}
                 y={backgroundImage ? backgroundImage.height - 30 : window.innerHeight * 0.75 - 30}
-                fontSize={20}
+                fontSize={10}
                 fontFamily="Arial"
                 fill="white"
                 align="center"
